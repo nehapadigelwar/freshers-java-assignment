@@ -1,0 +1,117 @@
+import java.util.Scanner;
+
+
+public class Customer {
+	public static int x=0;
+	public static String[][] Cust=new String[10][4];
+	public static Scanner sc=new Scanner(System.in);
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		boolean flag=true;
+		
+		 while(flag)
+		 {
+			 System.out.println("Enter your Choise:");
+			 System.out.println("1.Purchase Product");
+			 System.out.println("2.View");
+			 System.out.println("3.exit");
+			 int a=sc.nextInt();
+			 switch(a)
+			 {
+			 case 1:
+				 check();
+				 
+				 break;
+			 case 2:
+				 view();
+				 break;
+			 case 3:
+				 flag=false;
+				 break;
+				 default :
+					 System.out.println("please select correct menu item");
+			 }
+			 
+		 }
+
+	}
+
+	private static void view() {
+		// TODO Auto-generated method stub
+		if(x!=0)
+		{
+		for(int i=0;i<x;i++)
+		{
+			System.out.println("Customer id:"+Cust[i][0]);
+			System.out.println("Customer Name:"+Cust[i][1]);
+			System.out.println("Product id:"+Cust[i][2]);
+			System.out.println("Product Name:"+Cust[i][3]);
+		}
+		}
+		else
+			System.out.println("No Records found");
+		
+	}
+
+	private static void check() {
+		// TODO Auto-generated method stub
+		String Cid=null,Cname=null,Pid=null,Pname=null;
+		int k=0,flag=0,count=0,n=0,m=0;
+		System.out.println("Enter Customer id");
+		Cid=sc.next();
+		System.out.println("Enter Customer Name");
+		Cname=sc.next();
+		System.out.println("Enter Product id");
+		Pid=sc.next();
+		System.out.println("Enter Product Name");
+		Pname=sc.next();
+		while(k<x)
+		{
+			
+			
+				if(Cust[k][0].equals(Cid))
+				{
+					if(Cust[k][2].equals(Pid))
+					{
+						System.out.println("Product already purchased");
+						flag=1;
+						n=0;
+					}
+					else
+						n=1;
+					
+					
+				}
+				else{
+					count++;
+					
+					
+					
+				}
+				
+			k++;
+		}
+		if(n==1);
+		{
+			Cust[x][0]=Cid;
+			Cust[x][1]=Cname;
+			Cust[x][2]=Pid;
+			Cust[x][3]=Pname;
+			System.out.println("Successfully added to cart");
+			x++;
+			flag=1;
+		}
+		if(count==x)
+		{
+		Cust[x][0]=Cid;
+		Cust[x][1]=Cname;
+		Cust[x][2]=Pid;
+		Cust[x][3]=Pname;
+		System.out.println("Successfully added to cart");
+		x++;
+		
+		}
+		k=0;
+	}
+
+}
